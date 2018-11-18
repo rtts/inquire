@@ -19,8 +19,14 @@ func mailhandler(w http.ResponseWriter, r *http.Request) {
 	reply_to := r.FormValue("email")
 	body := r.FormValue("message")
 	redirect := r.FormValue("redirect")
+
+	// Bad request, log IP address and return 400
 	if reply_to == "" || body == "" || redirect == "" {
-		log.Println("Bad request from " + r.RemoteAddr)
+                ip := r.Header.Get("X-Real-IP")
+                if ip == "" {
+			ip = r.RemoteAddr
+		}
+		log.Println("Bad request from " + ip)
 		http.Error(w, "Get off my lawn!", 400)
 	} else {
 		log.Println("Valid inquiry from " + reply_to)
