@@ -2,10 +2,9 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"net/http"
-	"os/exec"
 	"strings"
+	"os/exec"
+	"net/http"
 )
 
 func sendmail(reply_to string, subject string, body string) {
@@ -26,10 +25,12 @@ func mailhandler(w http.ResponseWriter, r *http.Request) {
                 if ip == "" {
 			ip = r.RemoteAddr
 		}
-		log.Println("Bad request from " + ip)
+		fmt.Println("Bad request from " + ip)
 		http.Error(w, "Get off my lawn!", 400)
+
+	// Good request, send mail and return a 302 redirect
 	} else {
-		log.Println("Valid inquiry from " + reply_to)
+		fmt.Println("Valid inquiry from " + reply_to)
 		sendmail(reply_to, "Contactformulier", body)
 		http.Redirect(w, r, redirect, http.StatusFound)
 	}
@@ -38,5 +39,5 @@ func mailhandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	fmt.Println("Listening for inquiries at port 8008")
 	http.HandleFunc("/", mailhandler)
-	log.Fatal(http.ListenAndServe(":8008", nil))
+	http.ListenAndServe(":8008", nil)
 }
