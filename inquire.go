@@ -15,6 +15,9 @@ func sendmail(reply_to string, subject string, body string) {
 }
 
 func mailhandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "GET" {
+		return
+	}
 	reply_to := r.FormValue("email")
 	body := r.FormValue("message")
 	redirect := r.FormValue("redirect")
