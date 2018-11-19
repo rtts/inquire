@@ -34,3 +34,41 @@ contact form like this:
 If you want to change the "To" address or email subject, please edit
 the source code and recompile with `go build`
 
+Installation
+------------
+
+This couldn't be easier! Just copy the binary anywhere you'd like and
+run it. The server wil listen on port 8008 and log to standard
+output. Of course, you should use some kind of process monitor like
+systemd in production environments. Here's a sample systemd service
+file:
+
+    [Unit]
+    Description = Inquire
+
+    [Service]
+    ExecStart = /opt/inquire/inquire
+    User = www-data
+    Restart = always
+
+    [Install]
+    WantedBy = multi-user.target
+
+Also, here's an example configuration to use nginx as a reverse proxy:
+
+    server {
+      server_name inquire.rtts.eu;
+      listen 80;
+      listen 443 ssl;
+      ssl_certificate inquire.rtts.eu.chained.crt;
+      ssl_certificate_key inquire.rtts.eu.pem;
+
+      location / {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_pass http://127.0.0.1:8008;
+      }
+
+      location /.well-known/acme-challenge {
+        alias /etc/nginx/challenges/inquire.rtts.eu;
+      }
+    }
