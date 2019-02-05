@@ -20,9 +20,11 @@ func mailhandler(w http.ResponseWriter, r *http.Request) {
         }
         reply_to := r.FormValue("reply_to")
         subject := r.FormValue("subject")
+        redirect := r.FormValue("redirect")
+
+	// Spammers will never figure this out }:‑)
         body := r.FormValue("get_off_my_lawn")
         spam_detect := r.FormValue("message")
-        redirect := r.FormValue("redirect")
 
         // Bad request, log IP address but still return a "success" redirect
         if reply_to == "" || subject == "" || body == "" || redirect == "" || spam_detect != "" {
