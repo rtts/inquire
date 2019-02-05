@@ -2,7 +2,7 @@ Inquire
 =======
 
 Remember the old days when you would add a contact form to your
-homepage with something like this code?
+homepage with something like the following code?
 
     <FORM METHOD ="post" ACTION="/cgi-bin/mail-a-form">
     <P>Van (e-mailadres): <INPUT TYPE="text" NAME="from"><BR>
@@ -15,24 +15,26 @@ homepage with something like this code?
     <INPUT TYPE="reset" VALUE="Wis">
     </FORM>
 
-Well, first of all, these days aren't as you might think! The HTML
-sample code above was downloaded in November 2018 from
+Well, first of all, these days aren't as you might think! This HTML
+sample code can still be viewed in 2019 at
 https://www.xs4all.nl/service/diensten/hosting-en-homepage/gebruiken/shared-webhosting/cgi-scripts/mailaform.htm
 
 Inquire does more or less the same thing as `mail-a-form` above,
 except that it doesn't let the caller define the "To" address for
-obvious reasons. After starting the server with you can embed a
+obvious reasons. If you want to change the "To" address you'll have to
+edit the source code and recompile with `go build`. You can embed a
 contact form like this:
 
     <form action="https://inquire.rtts.eu/" method="post">
       <input type="email" name="email">
       <input type="hidden" name="redirect" value="https://rtts.eu">
+      <input type="hidden" name="subject" value="Contact Form">
       <textarea name="message"></textarea>
       <button>Send</button>
     </form>
 
-If you want to change the "To" address or email subject, please edit
-the source code and recompile with `go build`
+(Note: some no-so-advanced spam protection has been added so the above
+example will not work anymore. Check out the source code!)
 
 Installation
 ------------
