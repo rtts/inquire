@@ -16,7 +16,7 @@ var ALLOWED = map[string]bool{
 }
 
 func sendmail(to string, reply_to string, subject string, body string) {
-	cmd := exec.Command("/usr/sbin/sendmail", "jj@rtts.eu")
+	cmd := exec.Command("/usr/sbin/sendmail", to)
 	email := "To: " + to + "\nReply-To: " + reply_to + "\nSubject: " + subject + "\n\n" + body
 	cmd.Stdin = strings.NewReader(email)
 	cmd.Run()
