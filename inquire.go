@@ -11,7 +11,7 @@ var ALLOWED = map[string]bool{
 	"jj@rtts.eu":                     true,
 	"jj@returntothesource.nl":        true,
 	"info@superformosa.nl":           true,
-	"fraukevandenboogaard@gmail.com": true,
+	"fraukevandenbogaard@gmail.com":  true,
 	"frauke@studiomanna.nl":          true,
 }
 
