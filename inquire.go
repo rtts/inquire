@@ -13,6 +13,7 @@ var ALLOWED = map[string]bool{
 	"info@superformosa.nl":           true,
 	"fraukevandenbogaard@gmail.com":  true,
 	"frauke@studiomanna.nl":          true,
+	"info@hannakoppenaal.nl":         true,
 }
 
 func sendmail(to string, reply_to string, subject string, body string) {
