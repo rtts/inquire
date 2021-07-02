@@ -16,7 +16,7 @@ homepage with something like the following code?
     </FORM>
 
 Well, first of all, these days aren't as you might think! This HTML
-sample code can still be viewed in 2019 at
+sample code can still be viewed in 2021 at
 https://www.xs4all.nl/service/diensten/hosting-en-homepage/gebruiken/shared-webhosting/cgi-scripts/mailaform.htm
 
 Inquire does more or less the same thing as `mail-a-form` above,
@@ -33,7 +33,7 @@ contact form like this:
       <button>Send</button>
     </form>
 
-(Note: some no-so-advanced spam protection has been added so the above
+(Note: some not-so-advanced spam protection has been added so the above
 example will not work anymore. Check out the source code!)
 
 Installation
